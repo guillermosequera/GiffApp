@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import { AddCategory } from './components/AddCategory';
+import { GifGrid } from './components/GifGrid';
 
 const GiffApp = () => {
 
     
-    const [categories, setCategories] = useState(['One Punch', 'Samurai X', 'Dragon Ball']);
+    const [categories, setCategories] = useState(['One Punch']);
 
-    // const handleAdd = () => {
-    //     setCategories( [...categories, 'HunterXHunter'] );
-
-    //     console.log(categories);
-    // }
 
     return (
-        <h2>
-            GiffApp
+        <>
+        <h2> GiffApp </h2>
             <AddCategory setCategories={ setCategories } />
             <hr /> 
 
@@ -22,13 +18,17 @@ const GiffApp = () => {
 
             <ol>
                { 
-                    categories.map( (category, i) => {
-                        return <li key={ category }> {category} </li>
-                    })
+                    categories.map( category => 
+                        <GifGrid 
+                            key={ category }
+                            category={ category } 
+                        />
+                    
+                    )
                 }
             </ol>
-
-        </h2>
+        </>
+        
     )
 }
 
